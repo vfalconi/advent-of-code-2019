@@ -1,4 +1,4 @@
-const { sample, input, moduleRequirements, totalRequirements } = require('./day-1.js');
+const { sample, input, moduleRequirements, totalRequirements } = require('./puzzle.js');
 
 test('calculates module fuel requirments (sample)', () => {
 	expect(moduleRequirements(sample)).toBe(34241);
