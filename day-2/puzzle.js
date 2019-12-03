@@ -1,21 +1,21 @@
-const { sample, input } = require('./input');
+const { input } = require('./input');
 
-const calcOverwrite = (opcode, a, b, c) => {
+const calcOverwrite = (opcode, a, b) => {
 	if (opcode === 1) return a + b;
 	if (opcode === 2) return a * b;
 	return false;
 }
 
-const updateMemory = (arr, pointer) => {
-	let opcode = arr[pointer];
-	let posA = arr[pointer + 1];
-	let posB = arr[pointer + 2];
-	let posOverwrite = arr[pointer + 3];
-	let overwriteValue = calcOverwrite(opcode, arr[posA], arr[posB]);
+const updateMemory = (memory, pointer) => {
+	const opcode = memory[pointer];
+	const posA = memory[pointer + 1];
+	const posB = memory[pointer + 2];
+	const posOverwrite = memory[pointer + 3];
+	const overwriteValue = calcOverwrite(opcode, memory[posA], memory[posB]);
 
-	arr[posOverwrite] = overwriteValue;
+	memory[posOverwrite] = overwriteValue;
 
-	return arr;
+	return memory;
 }
 
 const walkThrough = (memory, pointer = 0, step = 4) => {
